@@ -1,0 +1,41 @@
+syntax = "proto3";
+
+//package test;
+
+message User {
+	string _id = 1;
+	string email = 2;
+	string username = 3;
+	string password = 4;
+}
+
+message GetUserByIdRequest {
+	string _id = 1; //order
+}
+
+message RegisterUserRequest {
+	User user = 1;
+}
+
+message LoginUserRequest {
+	User user = 1;
+}
+
+message UserResponse {
+	User user = 1;	
+}
+
+//para listar repeated -> tem um array de usuários
+message AllUserResponse {
+	repeated User users = 1;
+}
+
+message LoginResponse {
+	string token = 1;
+}
+
+service UserService {
+	rpc getUserById(GetUserByIdRequest) returns (UserResponse);
+	rpc registerUser(RegisterUserRequest) returns (UserResponse);
+	rpc loginUser(LoginUserRequest) returns(LoginResponse);
+}
