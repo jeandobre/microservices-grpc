@@ -14,7 +14,7 @@ class UserController {
 	async show(req, res){
 		const { id } = req.params;
 
-		UserService.getUserById({ _id: id }, (err, response) => {
+		UserService.getUserById({ id: id }, (err, response) => {
 			if(err) return res.status(404).json({ erro: err});
 			return res.json(response);
 		});

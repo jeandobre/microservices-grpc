@@ -3,14 +3,14 @@ syntax = "proto3";
 //package test;
 
 message User {
-	string _id = 1;
+	string id = 1;
 	string email = 2;
 	string username = 3;
 	string password = 4;
 }
 
 message GetUserByIdRequest {
-	string _id = 1; //order
+	string id = 1; //order
 }
 
 message RegisterUserRequest {
@@ -34,8 +34,13 @@ message LoginResponse {
 	string token = 1;
 }
 
+message AuthenticationRequest {
+	string token = 1;
+}
+
 service UserService {
 	rpc getUserById(GetUserByIdRequest) returns (UserResponse);
 	rpc registerUser(RegisterUserRequest) returns (UserResponse);
 	rpc loginUser(LoginUserRequest) returns(LoginResponse);
+	rpc authenticate(AuthenticationRequest) returns (UserResponse);
 }

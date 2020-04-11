@@ -1,4 +1,3 @@
-const { promisify } = require("util");
 const UserService = require("../services/user");
 
 class SessionController {
@@ -10,10 +9,7 @@ class SessionController {
 
 			return res.json(response);
 
-		});
-
-		//const response = await promisify(UserService.loginUser)({ email, password });
-	
+		});	
 	}
 }
 
